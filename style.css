@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+
+:root {
+    --dark-color : #363740;
+    --light-color: #F7F8FC;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Mulish', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.header {
+    display: flex;
+    gap: 15px;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    align-items: center;
+    padding: 15px 0 15px 25px;
+    font-size: 1.5rem;
+}
+
+.fa-list-check {
+    font-size: 2.9rem;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
+
+.nav {
+    background-color: var(--light-color);
+    padding: 40px 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.default-projects, .projects {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.default-projects-item, .projects-item {
+    display: flex;
+    gap: 10px;
+}

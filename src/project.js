@@ -1,32 +1,41 @@
-export default class Project {
+class Project {
     constructor(name) {
-        this.name = name;
-        this.projectTodos = [];
+        this._name = name;
+        this._todos = [];
     }
 
     get name() {
-        return this.name;
+        return this._name;
     }
 
-    get projectTodos() {
-        return this.projectTodos;
+    get todos() {
+        return this.todos;
     }
 
     set name(value) {
         if (value) {
-            this.name = value;
+            this._name = value;
         }
     }
 
-    set projectTodos(value) {
+    set todos(value) {
         if (value) {
-            this.projectTodos = value;
+            this._todos = value;
         }
     }
 
     addTodo(newTodo) {
         if (newTodo) {
-            this.projectTodos.push(newTodo);
+            this._todos.push(newTodo);
         }
     }
 }
+
+let allProjects = [];
+let gym = new Project('gym');
+let work = new Project('work');
+allProjects.push(gym);
+allProjects.push(work);
+
+
+export { Project, allProjects }

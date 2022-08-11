@@ -1,4 +1,10 @@
-import { toggleProjectModal, toggleTodoModal, closeModal } from "./domController";
+import { initWebpage } from "./domController";
+import Todo from "./todo";
+import { Project, allProjects } from "./project";
+
+initWebpage();
+
+
 
 
 

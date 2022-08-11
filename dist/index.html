@@ -27,12 +27,7 @@
                 </div>
             </div>
             <h1>Projects</h1>
-            <div class='projects'>
-                <div class='projects-item'>
-                    <i class='fa-solid fa-calendar-days'></i>
-                    Sample Project
-                </div>
-            </div>
+            <div class='projects'></div>
             <button class='create-project'>Add Project</button>
         </nav>
         <div class='todoContainer'>
@@ -70,13 +65,13 @@
                 <h2>New Project</h2>
                 <span class='close-button'>&times;</span>
             </div>
-            <form action='' class='modal-form'>
+            <form action='#' class='modal-form'>
                 <div class='form-group'>
                     <label for='projectName'>Name:</label>
-                    <input type='text' id='projectName' name='projectName'>
+                    <input type='text' id='projectName' name='projectName' required>
                 </div>
                 <div class='form-group'>
-                    <button class='modal-btn'>Add Project</button>
+                    <button type='button' class='modal-btn' id='submit-project'>Add Project</button>
                 </div>
             </form>
         </div>

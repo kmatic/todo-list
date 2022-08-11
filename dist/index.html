@@ -6,36 +6,81 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>To-do List</title>
     <link rel='stylesheet' href='style.css'>
-    <script src="https://kit.fontawesome.com/37b2e508a0.js" crossorigin="anonymous"></script>
+    <script src='https://kit.fontawesome.com/37b2e508a0.js' crossorigin='anonymous'></script>
     <script src='main.js' defer></script>
 </head>
 <body>
     <header class='header'>
-        <i class="fa-solid fa-list-check"></i>
+        <i class='fa-solid fa-list-check'></i>
         <h1>Todo List</h1>
     </header>
     <main class='main'>
         <nav class='nav'>
             <div class='default-projects'>
                 <div class='default-projects-item'>
-                    <i class="fa-solid fa-inbox"></i>
+                    <i class='fa-solid fa-inbox'></i>
                     Inbox
                 </div>
                 <div class='default-projects-item'>
-                    <i class="fa-solid fa-calendar-day"></i>
+                    <i class='fa-solid fa-calendar-day'></i>
                     Today
                 </div>
             </div>
             <h1>Projects</h1>
             <div class='projects'>
                 <div class='projects-item'>
-                    <i class="fa-solid fa-calendar-days"></i>
+                    <i class='fa-solid fa-calendar-days'></i>
                     Sample Project
                 </div>
             </div>
-            <button>Add Project</button>
+            <button class='create-project'>Add Project</button>
         </nav>
-        <div class='todoContainer'></div>
+        <div class='todoContainer'>
+            <h1>Inbox</h1>
+            <button class='create-todo'>Add Task</button>
+        </div>
     </main>
+    <div class='project-modal'>
+        <div class='modal-container'>
+            <div class='modal-header'>
+                <h2>New Project</h2>
+                <span class='close-button'>&times;</span>
+            </div>
+            <form action='' class='modal-form'>
+                <div class='form-group'>
+                    <label for='projectName'>Name:</label>
+                    <input type='text' id='projectName' name='projectName'>
+                </div>
+                <div class='form-group'>
+                    <button class='modal-btn'>Add Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class='todo-modal'>
+        <div class='modal-container'>
+            <div class='modal-header'>
+                <h2>New Todo</h2>
+                <span class='close-button'>&times;</span>
+            </div>
+            <form action='' class='modal-form'>
+                <div class='form-group'>
+                    <label for='todoTitle'>Title:</label>
+                    <input type='text' id='todoTitle' name='todoTitle'>
+                </div>
+                <div class='form-group'>
+                    <label for='todoDescription'>Description:</label>
+                    <textarea name='todoDescription' id='todoDescription' cols='30' rows='10'></textarea>
+                </div>
+                <div class='form-group'>
+                    <label for='todoDue'>Due Date:</label>
+                    <input type='date' id='todoTitle' name='todoTitle'>
+                </div>
+                <div class='form-group'>
+                    <button class='modal-btn'>Add Todo</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

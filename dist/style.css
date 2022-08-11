@@ -54,3 +54,90 @@ body {
     display: flex;
     gap: 10px;
 }
+
+.todoContainer {
+    padding: 30px 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-todo {
+    display: flex;
+}
+
+/* modal  */
+
+.project-modal, .todo-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 500px;
+    border-radius: 0.5rem;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid lightgray;
+}
+
+.close-button {
+    font-size: 1.5rem;
+    color: grey;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.close-button:hover {
+    filter: brightness(20%);
+}
+
+.modal-form {
+    padding: 0px 15px 15px 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    gap: 10px;
+}
+
+input, textarea {
+    padding: 8px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+.modal-btn {
+    padding: 8px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2rem;
+}
+
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}

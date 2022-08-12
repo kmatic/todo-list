@@ -18,3 +18,10 @@ export function deleteProject(projectIndex) {
 
     allProjects.splice(projectIndex, 1);
 }
+
+function addTodo() {
+    const title = document.querySelector('#todoTitle');
+    const description = document.querySelector('#todoDescription');
+    const duedate = document.querySelector('#todoDueDate');
+    const priority = document.querySelector('#todoPriority');
+}

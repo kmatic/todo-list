@@ -27,9 +27,7 @@
                 </div>
             </div>
             <h1>Projects</h1>
-            <div class='projects'>
-                <div class='projects-item'></div>
-            </div>
+            <div class='projects'></div>
             <button class='add-project-btn'><i class="fa-solid fa-plus"></i> Add Project</button>
         </nav>
         <div class='todoContainer'>
@@ -95,7 +93,15 @@
                 </div>
                 <div class='form-group'>
                     <label for='todoDue'>Due Date:</label>
-                    <input type='date' id='todoTitle' name='todoTitle'>
+                    <input type='date' id='todoDueDate' name='todoDueDate'>
+                </div>
+                <div class='form-group'>
+                    <label for='todoPriority'>Priority:</label>
+                    <select name='todoPriority' id='todoPriority'>
+                        <option value='1'>High</option>
+                        <option value='2'>Medium</option>
+                        <option value='3'>Low</option>
+                    </select>
                 </div>
                 <div class='form-group'>
                     <button class='modal-btn'>Add Todo</button>

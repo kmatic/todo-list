@@ -38,21 +38,64 @@ body {
 
 .nav {
     background-color: var(--light-color);
-    padding: 40px 30px 30px 30px;
+    padding: 20px 30px 30px 30px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 25px;
 }
 
 .default-projects, .projects {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 5px;
 }
 
-.default-projects-item, .projects-item {
+.default-projects-item {
     display: flex;
-    gap: 10px;
+    gap: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.projects-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.projects-item>div {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.default-projects-item:hover, .projects-item:hover {
+    background-color: lightgray;
+}
+
+.fa-trash-can {
+    visibility: hidden;
+}
+
+.projects-item:hover>.fa-trash-can {
+    visibility: visible;
+}
+
+.add-project-btn {
+    background-color: transparent;
+    border: 0px;
+    margin-top: -15px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.add-project-btn:hover {
+    background-color: lightgray;
 }
 
 .todoContainer {
@@ -61,7 +104,7 @@ body {
     flex-direction: column;
 }
 
-.create-todo {
+.add-todo-btn {
     display: flex;
     margin-top: 10px;
 }

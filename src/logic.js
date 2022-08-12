@@ -12,3 +12,9 @@ export function addProject() {
 
     allProjects.push(new Project(projectName));
 }
+
+export function deleteProject(projectIndex) {
+    // const deleteIndex = allProjects.find((project) => project.name === projectName);
+
+    allProjects.splice(projectIndex, 1);
+}

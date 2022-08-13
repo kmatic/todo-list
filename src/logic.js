@@ -15,5 +15,15 @@ export function addProject() {
 
 export function deleteProject(projectIndex) {
     allProjects.splice(projectIndex, 1);
+<<<<<<< HEAD
     console.log(allProjects);
+=======
+}
+
+function addTodo() {
+    const title = document.querySelector('#todoTitle');
+    const description = document.querySelector('#todoDescription');
+    const duedate = document.querySelector('#todoDueDate');
+    const priority = document.querySelector('#todoPriority');
+>>>>>>> refs/remotes/origin/main
 }

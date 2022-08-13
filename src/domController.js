@@ -27,6 +27,8 @@ export function toggleTodoModal() {
     });
 }
 
+// initialize project modal buttons
+
 function initProjectModalBtn() {
     const closeBtn = document.querySelectorAll('.close-button')[0];
     const addProjectSubmit = document.querySelector('#submit-project');
@@ -44,6 +46,8 @@ function initProjectModalBtn() {
     });
 }
 
+// initialize todo modal buttons
+
 function initTodoModalBtn() {
     const closeBtn = document.querySelectorAll('.close-button')[1];
 
@@ -52,7 +56,7 @@ function initTodoModalBtn() {
     });
 }
 
-// Close modal
+// Close modal functions
 
 export function closeProjectModal() {
     const projectModal = document.querySelector('.project-modal');
@@ -64,6 +68,7 @@ function closeTodoModal() {
     todoModal.classList.remove('show-modal');
 }
 
+<<<<<<< HEAD
 // Clear modal
 
 function clearProjectModal() {
@@ -72,24 +77,54 @@ function clearProjectModal() {
 }
 
 // Projects dom &
+=======
+// Projects dom rendering
+>>>>>>> refs/remotes/origin/main
 
 export function renderProjects() {
     const projectsContainer = document.querySelector('.projects');
     projectsContainer.innerHTML = '';
 
     allProjects.forEach(project => {
-        const newProjectDom = document.createElement('div');
-        newProjectDom.classList.add('projects-item');
-        newProjectDom.innerHTML = `<div>
+        const newProjectDiv = document.createElement('div');
+        newProjectDiv.classList.add('projects-item');
+
+        newProjectDiv.innerHTML = `<div>
                                         <i class='fa-solid fa-calendar-days'></i>
                                         <p>${project.name}</p>
                                   </div>
                                   <i class="fa-solid fa-trash-can project-delete-btn"></i>`;
-        projectsContainer.appendChild(newProjectDom);
+
+        projectsContainer.appendChild(newProjectDiv);
     });
 
     initProjectDelBtn();
+    initProjectItem();
 }
+
+function renderTodos(index) {
+    const todoContainer = document.querySelector('.todo-list');
+    todoContainer.innerHTML = '';
+
+    allProjects[index].todos.forEach(todo => {
+        const newTodoDiv = document.createElement('div');
+        newTodoDiv.classList.add('todo-item');
+
+        newTodoDiv.innerHTML = `<div class='todo-left-group'>
+                                    <input type='checkbox'>
+                                    <p>${todo.title}</p>
+                                </div>
+                                <div class='todo-right-group'>
+                                    <p>${todo.dueDate}</p>
+                                    <i class="fa-solid fa-pen"></i>
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </div>`;
+
+        todoContainer.appendChild(newTodoDiv);
+    });
+}
+
+// initialize project delete btn
 
 function initProjectDelBtn() {
     const projectDelBtns = document.querySelectorAll('.project-delete-btn')
@@ -101,6 +136,30 @@ function initProjectDelBtn() {
         });
     })
 }
+
+// initialize project items on sidebar for changing active project
+
+function initProjectItem() {
+    const projectItems = document.querySelectorAll('.projects-item');
+
+    projectItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            changeActiveProject(index);
+        });
+    });
+}
+
+// function to change active project
+
+function changeActiveProject(index) {
+    const projectTitle = document.querySelector('.project-title');
+
+    projectTitle.textContent = allProjects[index].name;
+
+    renderTodos(index);    
+}
+
+// function to initialize webpage 
 
 export function initWebpage() {
     const addProjectModal = document.querySelector('.add-project-btn');

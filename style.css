@@ -105,8 +105,17 @@ body {
 }
 
 .add-todo-btn {
-    display: flex;
+    text-align: left;
     margin-top: 10px;
+    background-color: transparent;
+    border: 0px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+}
+
+.add-todo-btn:hover {
+    background-color: lightgray;
 }
 
 /* modal  */

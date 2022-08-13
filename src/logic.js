@@ -14,7 +14,6 @@ export function addProject() {
 }
 
 export function deleteProject(projectIndex) {
-    // const deleteIndex = allProjects.find((project) => project.name === projectName);
-
     allProjects.splice(projectIndex, 1);
+    console.log(allProjects);
 }

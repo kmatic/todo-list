@@ -22,7 +22,7 @@ export function toggleTodoModal() {
     
     window.addEventListener('click', (e) => {
         if (e.target === todoModal) {
-            closeModal(todoModal);
+            closeTodoModal();
         }
     });
 }
@@ -38,6 +38,7 @@ function initProjectModalBtn() {
     addProjectSubmit.addEventListener('click', () => {
         addProject();
         renderProjects();
+        clearProjectModal();
         closeProjectModal();
         console.log(allProjects);
     });
@@ -47,7 +48,7 @@ function initTodoModalBtn() {
     const closeBtn = document.querySelectorAll('.close-button')[1];
 
     closeBtn.addEventListener('click', () => {
-        closeModal(todoModal);
+        closeTodoModal();
     });
 }
 
@@ -61,6 +62,13 @@ export function closeProjectModal() {
 function closeTodoModal() {
     const todoModal = document.querySelector('.todo-modal');
     todoModal.classList.remove('show-modal');
+}
+
+// Clear modal
+
+function clearProjectModal() {
+    const projectNameInput = document.querySelector('#projectName');
+    projectNameInput.value = '';
 }
 
 // Projects dom &

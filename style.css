@@ -76,11 +76,11 @@ body {
     background-color: lightgray;
 }
 
-.fa-trash-can {
+.projects-item>.project-delete-btn {
     visibility: hidden;
 }
 
-.projects-item:hover>.fa-trash-can {
+.projects-item:hover>.project-delete-btn {
     visibility: visible;
 }
 

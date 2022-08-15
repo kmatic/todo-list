@@ -27,15 +27,17 @@ export function createTodo() {
 
     let activeProject = getActiveProject();
     activeProject.addTodo(new Todo(title, description, dueDate, priority));
+}
 
-    // allProjects[index].addTodo(new Todo(title, description, dueDate, priority));
+export function deleteTodo(taskIndex) {
+    let activeProject = getActiveProject();
+    activeProject.delTodo(taskIndex);
 }
 
 export function getActiveProject() {
     const activeProject = document.querySelector('.project-title').textContent;
 
     return allProjects.find((project) => project.name === activeProject);
-
 }
 
 

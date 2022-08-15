@@ -31,6 +31,10 @@ class Project {
             this._todos.push(newTodo);
         }
     }
+
+    delTodo(index) {
+        this._todos.splice(index, 1);
+    }
 }
 
 let allProjects = [];

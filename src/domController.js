@@ -1,5 +1,5 @@
 import { Project, allProjects } from './project';
-import { addProject, deleteProject, createTodo, getActiveProject } from './logic';
+import { addProject, deleteProject, createTodo, getActiveProject, deleteTodo } from './logic';
 
 // Add Project Modal Toggle
 
@@ -117,6 +117,8 @@ export function renderProjects() {
     initProjectItem();
 }
 
+// Tasks dom rendering
+
 function renderTodos() {
     const todoContainer = document.querySelector('.todo-list');
     todoContainer.innerHTML = '';
@@ -134,11 +136,13 @@ function renderTodos() {
                                 <div class='todo-right-group'>
                                     <p>${todo.dueDate}</p>
                                     <i class="fa-solid fa-pen"></i>
-                                    <i class="fa-solid fa-trash-can"></i>
+                                    <i class="fa-solid fa-trash-can todo-delete-btn"></i>
                                 </div>`;
 
         todoContainer.appendChild(newTodoDiv);
     });
+
+    initTaskBtns();
 }
 
 // initialize project delete btn
@@ -151,7 +155,7 @@ function initProjectDelBtn() {
             deleteProject(index);
             renderProjects();
         });
-    })
+    });
 }
 
 // initialize project items on sidebar for changing active project
@@ -162,6 +166,20 @@ function initProjectItem() {
     projectItems.forEach((item, index) => {
         item.addEventListener('click', () => {
             changeActiveProject(index);
+        });
+    });
+}
+
+// initalize project task buttons
+
+function initTaskBtns() {
+    const taskEditBtns = document.querySelectorAll('.fa-pen');
+    const taskDelBtns = document.querySelectorAll('.todo-delete-btn');
+
+    taskDelBtns.forEach((delBtn, index) => {
+        delBtn.addEventListener('click', () => {
+            deleteTodo(index);
+            renderTodos();
         });
     });
 }

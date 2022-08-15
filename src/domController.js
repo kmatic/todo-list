@@ -1,5 +1,5 @@
 import { Project, allProjects } from './project';
-import { addProject, deleteProject } from './logic';
+import { addProject, deleteProject, createTodo, getActiveProject } from './logic';
 
 // Add Project Modal Toggle
 
@@ -31,18 +31,17 @@ export function toggleTodoModal() {
 
 function initProjectModalBtn() {
     const closeBtn = document.querySelectorAll('.close-button')[0];
-    const addProjectSubmit = document.querySelector('#submit-project');
+    const submitProjectBtn = document.querySelector('#submit-project');
 
     closeBtn.addEventListener('click', () => {
         closeProjectModal();
     });
 
-    addProjectSubmit.addEventListener('click', () => {
+    submitProjectBtn.addEventListener('click', () => {
         addProject();
         renderProjects();
         clearProjectModal();
         closeProjectModal();
-        console.log(allProjects);
     });
 }
 
@@ -50,10 +49,18 @@ function initProjectModalBtn() {
 
 function initTodoModalBtn() {
     const closeBtn = document.querySelectorAll('.close-button')[1];
+    const submitTodoBtn = document.querySelector('#submit-todo');
 
     closeBtn.addEventListener('click', () => {
         closeTodoModal();
     });
+
+    submitTodoBtn.addEventListener('click', () => {
+        createTodo();
+        renderTodos();
+        clearTodoModal();
+        closeTodoModal();
+    })
 }
 
 // Close modal functions
@@ -68,7 +75,6 @@ function closeTodoModal() {
     todoModal.classList.remove('show-modal');
 }
 
-<<<<<<< HEAD
 // Clear modal
 
 function clearProjectModal() {
@@ -76,10 +82,19 @@ function clearProjectModal() {
     projectNameInput.value = '';
 }
 
-// Projects dom &
-=======
+function clearTodoModal() {
+    const title = document.querySelector('#todoTitle');
+    const description = document.querySelector('#todoDescription');
+    const dueDate = document.querySelector('#todoDueDate');
+    const priority = document.querySelector('#todoPriority');
+
+    title.value = '';
+    description.value = '';
+    dueDate.value = '';
+    priority.value = '';
+}
+
 // Projects dom rendering
->>>>>>> refs/remotes/origin/main
 
 export function renderProjects() {
     const projectsContainer = document.querySelector('.projects');
@@ -102,11 +117,13 @@ export function renderProjects() {
     initProjectItem();
 }
 
-function renderTodos(index) {
+function renderTodos() {
     const todoContainer = document.querySelector('.todo-list');
     todoContainer.innerHTML = '';
 
-    allProjects[index].todos.forEach(todo => {
+    let activeProject = getActiveProject();
+
+    activeProject.todos.forEach(todo => {
         const newTodoDiv = document.createElement('div');
         newTodoDiv.classList.add('todo-item');
 
@@ -156,7 +173,7 @@ function changeActiveProject(index) {
 
     projectTitle.textContent = allProjects[index].name;
 
-    renderTodos(index);    
+    renderTodos();    
 }
 
 // function to initialize webpage 

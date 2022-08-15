@@ -1,5 +1,6 @@
 import { Project, allProjects } from "./project";
 import { renderProjects, closeProjectModal } from "./domController";
+import Todo from "./todo";
 
 export function addProject() {
     const projectNameInput = document.querySelector('#projectName');
@@ -15,15 +16,27 @@ export function addProject() {
 
 export function deleteProject(projectIndex) {
     allProjects.splice(projectIndex, 1);
-<<<<<<< HEAD
-    console.log(allProjects);
-=======
 }
 
-function addTodo() {
-    const title = document.querySelector('#todoTitle');
-    const description = document.querySelector('#todoDescription');
-    const duedate = document.querySelector('#todoDueDate');
-    const priority = document.querySelector('#todoPriority');
->>>>>>> refs/remotes/origin/main
+export function createTodo() {
+    const title = document.querySelector('#todoTitle').value;
+    const description = document.querySelector('#todoDescription').value;
+    const dueDate = document.querySelector('#todoDueDate').value;
+    const priority = document.querySelector('#todoPriority').value;
+    console.log(dueDate);
+
+    let activeProject = getActiveProject();
+    activeProject.addTodo(new Todo(title, description, dueDate, priority));
+
+    // allProjects[index].addTodo(new Todo(title, description, dueDate, priority));
 }
+
+export function getActiveProject() {
+    const activeProject = document.querySelector('.project-title').textContent;
+
+    return allProjects.find((project) => project.name === activeProject);
+
+}
+
+
+

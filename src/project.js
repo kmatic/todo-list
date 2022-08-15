@@ -43,6 +43,6 @@ let todo1 = new Todo('Work out', 'Do heavy push day', 'tomorrow', '1');
 let todo2 = new Todo('Go for a Run', 'Run around the park', 'Next week', '2');
 allProjects[0].addTodo(todo1);
 allProjects[0].addTodo(todo2);
-console.log(allProjects[0].todos);
+console.log(allProjects);
 
 export { Project, allProjects }

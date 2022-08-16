@@ -1,5 +1,5 @@
 import { Project, allProjects } from './project';
-import { addProject, deleteProject, createTodo, getActiveProject, deleteTodo } from './logic';
+import { addProject, deleteProject, createTodo, getActiveProject, deleteTodo, editTodo } from './logic';
 
 // Add Project Modal Toggle
 
@@ -25,6 +25,19 @@ export function toggleTodoModal() {
             closeTodoModal();
         }
     });
+}
+
+// edit todo modal toggle
+
+function toggleEditModal() {
+    const editModal = document.querySelector('.edit-modal');
+    editModal.classList.add('show-modal');
+
+    window.addEventListener('click', (e) =>{
+        if (e.target === editModal) {
+            closeEditModal();
+        }
+    })
 }
 
 // initialize project modal buttons
@@ -60,7 +73,24 @@ function initTodoModalBtn() {
         renderTodos();
         clearTodoModal();
         closeTodoModal();
-    })
+    });
+}
+
+// initialize edit modal buttons
+
+function initEditModalBtn() {
+    const closeBtn = document.querySelectorAll('.close-button')[2];
+    const editTodoBtn = document.querySelector('#edit-todo');
+
+    closeBtn.addEventListener('click', () => {
+        closeEditModal();
+    });
+
+    editTodoBtn.addEventListener('click', () => {
+        editTodo();
+        renderTodos();
+        closeEditModal();
+    });
 }
 
 // Close modal functions
@@ -73,6 +103,11 @@ export function closeProjectModal() {
 function closeTodoModal() {
     const todoModal = document.querySelector('.todo-modal');
     todoModal.classList.remove('show-modal');
+}
+
+function closeEditModal() {
+    const editModal = document.querySelector('.edit-modal');
+    editModal.classList.remove('show-modal');
 }
 
 // Clear modal
@@ -91,7 +126,7 @@ function clearTodoModal() {
     title.value = '';
     description.value = '';
     dueDate.value = '';
-    priority.value = '';
+    priority.value = '1';
 }
 
 // Projects dom rendering
@@ -182,6 +217,30 @@ function initTaskBtns() {
             renderTodos();
         });
     });
+
+    taskEditBtns.forEach((editBtn, index) => {
+        editBtn.addEventListener('click', () => {
+            getEditModalFields(index);
+            getActiveProject().activeTodo = index.toString();
+            toggleEditModal();
+        });
+    });
+}
+
+// Get task details to edit
+
+function getEditModalFields(index) {
+    const title = document.querySelector('#editTodoTitle');
+    const description = document.querySelector('#editTodoDescription');
+    const dueDate = document.querySelector('#editTodoDueDate');
+    const priority = document.querySelector('#editTodoPriority');
+
+    let activeProject = getActiveProject();
+
+    title.value = activeProject.todos[index].title;
+    description.value = activeProject.todos[index].description;
+    dueDate.value = activeProject.todos[index].dueDate;
+    priority.value = activeProject.todos[index].priority;
 }
 
 // function to change active project
@@ -203,7 +262,8 @@ export function initWebpage() {
     addProjectModal.addEventListener('click', toggleProjectModal);
     addtodoModal.addEventListener('click', toggleTodoModal);
 
-    initProjectModalBtn()
-    initTodoModalBtn();
     renderProjects();
+    initProjectModalBtn();
+    initTodoModalBtn();
+    initEditModalBtn();
 }

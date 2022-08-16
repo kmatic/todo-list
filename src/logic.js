@@ -23,7 +23,6 @@ export function createTodo() {
     const description = document.querySelector('#todoDescription').value;
     const dueDate = document.querySelector('#todoDueDate').value;
     const priority = document.querySelector('#todoPriority').value;
-    console.log(dueDate);
 
     let activeProject = getActiveProject();
     activeProject.addTodo(new Todo(title, description, dueDate, priority));
@@ -32,6 +31,22 @@ export function createTodo() {
 export function deleteTodo(taskIndex) {
     let activeProject = getActiveProject();
     activeProject.delTodo(taskIndex);
+}
+
+export function editTodo() {
+    const title = document.querySelector('#editTodoTitle').value;
+    const description = document.querySelector('#editTodoDescription').value;
+    const dueDate = document.querySelector('#editTodoDueDate').value;
+    const priority = document.querySelector('#editTodoPriority').value;
+    
+    let activeProject = getActiveProject();
+    let activeTaskIndex = parseInt(activeProject.activeTodo);
+    let activeTask = activeProject.todos[activeTaskIndex];
+
+    activeTask.title = title;
+    activeTask.description = description;
+    activeTask.dueDate = dueDate;
+    activeTask.priority = priority;
 }
 
 export function getActiveProject() {

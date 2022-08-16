@@ -45,20 +45,20 @@ class Project {
 
     delTodo(index) {
         this._todos.splice(index, 1);
-    }
-
-    
+    } 
 }
 
 let allProjects = [];
+let inbox = new Project('Inbox');
 let gym = new Project('Gym');
 let work = new Project('Work');
+allProjects.push(inbox);
 allProjects.push(gym);
 allProjects.push(work);
 
 let todo1 = new Todo('Work out', 'Do heavy push day', '2020-01-31', '1');
 let todo2 = new Todo('Go for a Run', 'Run around the park', '2022-02-20', '2');
-allProjects[0].addTodo(todo1);
-allProjects[0].addTodo(todo2);
+allProjects[1].addTodo(todo1);
+allProjects[1].addTodo(todo2);
 
 export { Project, allProjects }

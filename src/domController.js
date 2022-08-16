@@ -135,7 +135,7 @@ export function renderProjects() {
     const projectsContainer = document.querySelector('.projects');
     projectsContainer.innerHTML = '';
 
-    allProjects.forEach(project => {
+    allProjects.slice(1).forEach(project => { // slice to ignore inbox 'project'
         const newProjectDiv = document.createElement('div');
         newProjectDiv.classList.add('projects-item');
 
@@ -247,7 +247,6 @@ function getEditModalFields(index) {
 
 function changeActiveProject(index) {
     const projectTitle = document.querySelector('.project-title');
-
     projectTitle.textContent = allProjects[index].name;
 
     renderTodos();    
@@ -263,6 +262,7 @@ export function initWebpage() {
     addtodoModal.addEventListener('click', toggleTodoModal);
 
     renderProjects();
+    renderTodos();
     initProjectModalBtn();
     initTodoModalBtn();
     initEditModalBtn();

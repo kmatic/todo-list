@@ -193,6 +193,10 @@ input, textarea, select {
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
+input:invalid {
+    border-color: rgb(196, 12, 12);
+}
+
 /* todo styling */
 
 .todo-item {

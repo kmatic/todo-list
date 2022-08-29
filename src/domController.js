@@ -40,17 +40,24 @@ function toggleEditModal() {
     })
 }
 
-// initialize project modal buttons
+// initialize project modal 
 
-function initProjectModalBtn() {
+function initProjectModal() {
     const closeBtn = document.querySelectorAll('.close-button')[0];
     const submitProjectBtn = document.querySelector('#submit-project');
+    const project = document.querySelector('#projectName');
 
     closeBtn.addEventListener('click', () => {
         closeProjectModal();
     });
 
-    submitProjectBtn.addEventListener('click', () => {
+    submitProjectBtn.addEventListener('click', (e) => {
+        if (project.validity.valueMissing) {
+            project.setCustomValidity('Please provide a project name');
+            project.reportValidity();
+            e.preventDefault();
+            return false;
+        }
         addProject();
         renderProjects();
         clearProjectModal();
@@ -58,17 +65,30 @@ function initProjectModalBtn() {
     });
 }
 
-// initialize todo modal buttons
+// initialize todo modal
 
-function initTodoModalBtn() {
+function initTodoModal() {
     const closeBtn = document.querySelectorAll('.close-button')[1];
     const submitTodoBtn = document.querySelector('#submit-todo');
+    const title = document.querySelector('#todoTitle');
+    const date = document.querySelector('#todoDueDate');
 
     closeBtn.addEventListener('click', () => {
         closeTodoModal();
     });
 
-    submitTodoBtn.addEventListener('click', () => {
+    submitTodoBtn.addEventListener('click', (e) => {
+        if (title.validity.valueMissing) {
+            title.setCustomValidity('Please provide a task name');
+            title.reportValidity();
+            e.preventDefault();
+            return false;
+        } else if (date.validity.valueMissing) {
+            date.setCustomValidity('Please provide a due date');
+            date.reportValidity();
+            e.preventDefault();
+            return false;
+        }
         createTodo();
         renderTodos();
         clearTodoModal();
@@ -76,17 +96,30 @@ function initTodoModalBtn() {
     });
 }
 
-// initialize edit modal buttons
+// initialize edit modal
 
-function initEditModalBtn() {
+function initEditModal() {
     const closeBtn = document.querySelectorAll('.close-button')[2];
     const editTodoBtn = document.querySelector('#edit-todo');
+    const title = document.querySelector('#editTodoTitle');
+    const date = document.querySelector('#editTodoDueDate');
 
     closeBtn.addEventListener('click', () => {
         closeEditModal();
     });
 
-    editTodoBtn.addEventListener('click', () => {
+    editTodoBtn.addEventListener('click', (e) => {
+        if (title.validity.valueMissing) {
+            title.setCustomValidity('Please provide a task name');
+            title.reportValidity();
+            e.preventDefault();
+            return false;
+        } else if (date.validity.valueMissing) {
+            date.setCustomValidity('Please provide a due date');
+            date.reportValidity();
+            e.preventDefault();
+            return false;
+        }
         editTodo();
         renderTodos();
         closeEditModal();
@@ -263,7 +296,7 @@ export function initWebpage() {
 
     renderProjects();
     renderTodos();
-    initProjectModalBtn();
-    initTodoModalBtn();
-    initEditModalBtn();
+    initProjectModal();
+    initTodoModal();
+    initEditModal();
 }

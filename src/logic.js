@@ -15,7 +15,7 @@ export function addProject() {
 }
 
 export function deleteProject(projectIndex) {
-    allProjects.splice(projectIndex, 1);
+    allProjects.splice(projectIndex + 1, 1);
 }
 
 export function createTodo() {
